@@ -1,118 +1,170 @@
-# 01_Caso_SmartDesk
-Caso práctico de análisis de bases de datos SQL   
+# Enterprise Sales & Business Performance Analytics with SQL
 
+> Business-oriented SQL analytics project focused on commercial performance and strategic decision-making across regions, industries, and product categories.
 
-# 1. Análisis de Ventas y Beneficio por Categoría de Producto
+---
 
-La dirección comercial necesita un análisis detallado del desempeño de la cuenta Adabs Entertainment durante el año 2020. Se requiere un desglose completo por categoría de producto que incluya todas las líneas de ingreso (mantenimiento, producto, partes y soporte), las unidades vendidas y el beneficio generado.
+## Project Overview
 
-[SQL QUERY: RENDIMIENTO DE LA CUENTA DEL CLIENTE ADABS ENTERTAINMENT EN EL AÑO 2020](sql/Query01.sql)
+This project delivers business performance analysis using SQL over a commercial sales database, simulating real-world BI scenarios found in enterprise environments.
 
-![img](images/image01.png)
+The objective is to extract **actionable business insights** related to revenue, profitability, customer behavior, regional performance, and sales forecasting — supporting strategic decision-making at the commercial and financial leadership level.
 
-CONCLUSIONES:
-De la relación entre el ingreso total (TOTAL_VENTAS) y el beneficio (BENEFICIO_TOTAL) de las ventas de sillas y electrónica a dicho cliente, se aprecia que tienen un rendimiento del 33% y 36% respectivamente, relativamente similar a pesar de tratarse de elementos tan diferentes. Habría que comparar estos rendimientos con los de otros clientes para evaluar si son habituales y/o aceptables.
- 
+---
 
-# 2. Comparación de Rendimiento por País en Regiones APAC y EMEA
+## Business Questions Solved
 
-El departamento de expansión internacional requiere comparar el rendimiento promedio de ventas entre los diferentes países de las regiones APAC y EMEA. Este análisis permitirá identificar mercados con mayor potencial y establecer benchmarks regionales para la toma de decisiones estratégicas.
+- Which customer accounts generate the highest revenue and margin by product category?
+- Which regions and countries drive the strongest commercial performance?
+- Which industries are closest to closing high-value deals, and where does profitability stand?
+- Are sales forecasts for 2022 aligned with 2021 actual performance?
+- Which region–industry combinations yield the highest and lowest profit margins?
+- Where should the company prioritize future investment and resource allocation?
 
-[SQL QUERY: COMPARACION DE RENDIMIENTO POR PAIS EN LAS REGIONES DE APAC Y EMEA](sql/Query02.sq2)
-![img](images/image02.png)
+---
 
-![img](images/image02g.png)
+## Technologies Used
 
-CONCLUSIONES:
-Se puede observar que en general los países de la región APAC tienen un ingreso y beneficio considerablemente mayor, destacando Australia y Singapore.
+- SQL (aggregations, window functions, conditional logic, multi-table joins)
+- Relational Databases
+- KPI Analysis & Profitability Metrics
+- Business Intelligence & Data Visualization
+- Sales Forecasting & Variance Analysis
 
-REFLEXIONES ADICIONALES:
-A pesar de ser menos países en la región APAC el beneficio total de ambas regiones ronda los 3390000.00, como se puede observar en el resultado de la siguiente consulta:
+---
 
-[SQL QUERY: CONSULTA PARA LA SUMA LOS BENEFICIOS PROMEDIO DE LAS DOS REGIONES, EMEA Y APAC](sql/Query02b.sql)
-![img](images/image02b.png)
- 
-COMPROBACIÓN ADICIONAL:
-De una consulta exploratoria previa sabemos que en la tabla ACCOUNTS figuran registros de 9 países para la región EMEA, pero en la consulta anterior sólo aparecen 8, el que no aparece es United Kingdom (UK). Comprobamos que efectivamente no hay registros de ventas en la tabla SALES para los 4 clientes registrados de UK.
+## Analysis Portfolio
 
-  
-# 3. Análisis del Beneficio Total por Industria: Estudio de Clientes en Etapa de Compromiso
+### 1. Customer Account Performance — Product Category Breakdown
 
-El equipo de ventas estratégicas necesita identificar qué industrias generan mayor beneficio entre las cuentas que se encuentran en etapa Commit (acuerdos cercanos al cierre) y que tienen un pronóstico superior a $500,000. Los resultados deben clasificarse como "Alto" si el beneficio total de la industria supera el $1,000,000, o "Normal" en caso contrario.
+**Business Context:** The commercial leadership team requires a detailed performance breakdown of account **Adabs Entertainment** for FY2020, covering all revenue streams (maintenance, product, parts, and support), units sold, and total profit.
 
-[SQL QUERY: ESTUDIO DE INDUSTRIAS GENERAN MAYOR BENEFICIO EN ETAPA DE COMPROMISO "COMMIT"](sql/Query03.sql)
-![img](images/image03.png)
+[SQL QUERY → Query01.sql](sql/Query01.sql)
 
-![img](images/image03g.png)
- 
-CONCLUSIONES:
-El sector financiero no está alcanzando el pronóstico superior a 500k. 
+![Revenue and Profit by Product Category — Adabs Entertainment 2020](images/image01.png)
 
+**Business Insight**
 
-# 4. Evolución del Pronóstico y Beneficio Real: Análisis de la Trayectoria por Categoría.
+Chairs and Electronics both delivered profit margins of approximately **33% and 36%** respectively — a notably similar performance despite the structural differences between product lines. This consistency may reflect standardized pricing or cost structures across categories.
 
-La dirección financiera requiere un análisis consolidado por categoría de producto que compare los beneficios reales totales obtenidos en 2021 con los pronósticos totales para 2022. Adicionalmente, se debe identificar la antigüedad de las oportunidades de venta (más reciente y más antigua) dentro de cada categoría para evaluar la velocidad del ciclo de ventas.Calcula el beneficio de 2021 junto con el pronóstico de beneficio para el año 2022, agrupando los resultados por categoría de producto. Además, queremos identificar la oportunidad más antigua y la más reciente dentro de cada categoría.
+> **Recommended action:** Benchmark these margins against comparable accounts to assess whether current profitability levels are competitive or represent an optimization opportunity.
 
-[SQL QUERY: EVOLUCION DEL PRONOSTICO Y BENEFICIO REAL: ESTUDIO DE TRAYECTORIA POR CATEGORIA](sql/Query04.sql)
-![img](images/image04.png)
+---
 
-![img](images/image04g.png)
- 
-CONCLUSIONES:
-En las 4 categorías se aprecia que el mínimo de días que ha estado abierta una oportunidad de venta es de apenas 2-3 días, sin embargo puede apreciarse que en 3 de ellas las oportunidades más antiguas superan el año (más de 365 días abierta), de seguir "abiertas" sería conveniente examinar el motivo, y en qué estado realmente se encuentran (tratar de cerrar la venta o darla por no realizada finalmente) a fin de esclarecer el estado real y valorar la situación del stock y medios (repuestos, servicio técnico, o mantenimiento) a disponer en función de la demanda real. 
+### 2. Regional Sales Performance — APAC vs. EMEA Country Comparison
 
+**Business Context:** The international expansion team requires a cross-country performance comparison across the **APAC and EMEA regions** to identify high-potential markets and establish regional benchmarks for strategic investment decisions.
 
-# 5. CASO PRÁCTICO: ANÁLISIS LIBRE
+[SQL QUERY → Query02.sql](sql/Query02.sq2)
 
-  1.	INTRODUCCIÓN
-La dirección de ventas busca identificar en qué combinación de región e industria la empresa obtiene los mayores y menores beneficios y márgenes.
-Este análisis cruzado permite detectar las zonas geográficas y sectores industriales más rentables, optimizando las estrategias comerciales y su asignación de recursos.
+![Country Performance — APAC vs EMEA](images/image02.png)
+![Regional Performance Chart](images/image02g.png)
 
-  2.	HIPOTESIS INICIAL
-Se busca identificar las regiones e industrias mejor y peor posicionadas para realizar una evaluación exhaustiva de ellas, tratar de justificar o corregir las situaciones más desfavorables, así como entender y replicar las estrategias que se estén siguiendo en las regiones e industrias más aventajadas.
+**Business Insight**
 
-  3.	ANALISIS EXPLORATORIO
-Para resumir la situación general en las 4 regiones extraemos el beneficio total, mínimo, máximo, promedio, su desviación, y el promedio de los márgenes:
+APAC markets demonstrate significantly stronger revenue and profitability compared to EMEA, with **Australia and Singapore** as the top-performing countries. This suggests higher market maturity, stronger pricing dynamics, or greater operational efficiency in those markets.
 
-[SQL QUERY: ANALISIS EXPLORATORIO](sql/Query05.sql)
-![img](images/image05.png)
+Despite fewer countries, APAC's combined average profit contribution reaches parity with EMEA — both regions converge around **$3,390,000** in total average profit, as confirmed below.
 
-![img](images/image05g.png)
+[SQL QUERY — Total Average Profit: EMEA + APAC → Query02b.sql](sql/Query02b.sql)
 
-De lo que extremos que la que las regiones que generan mayor beneficio son NAM y EMEA, y la que menos por mucho LATAM, sin embargo, los márgenes promedio no difieren tanto entre estás regiones. Dicha diferencia puede deberse a varios factores, desde la diferencia de territorio o población hasta la falta de mercado en la región (posible predominio de zonas rurales, etc.).
+![Combined Region Profit Verification](images/image02b.png)
 
+> **Data quality flag:** The EMEA region holds **9 registered countries** in the ACCOUNTS table, but only 8 appear in the sales analysis. **United Kingdom (UK)** has 4 registered accounts with zero recorded sales — a gap that warrants investigation before any go-to-market strategy for that market.
 
-Con la siguiente consulta, podemos identificar cuales son las industrias con mayor y menor margen de beneficio en cada región. Se ha asignado la etiqueta RENDIMIENTO en función de los márgenes para cada industria según el siguiente criterio:
--	Margen > 38%			        ->	Alto
--	Margen entre el 38 y 33% 	->	Medio
--	Margen < 33%			        -> 	Bajo
+---
 
-[SQL QUERY: ORDENADO POR MARGEN EN CADA REGION](sql/Query05b.sql)
-![img](images/image05b.png)
+### 3. Industry Profitability Analysis — High-Value Pipeline (Commit Stage)
 
-![img](images/image05bg.png)
+**Business Context:** The strategic sales team needs to identify which industries generate the highest profit among accounts in the **Commit stage** (near-close deals) with a forecast exceeding **$500,000**. Industries are classified as *High* (profit > $1M) or *Normal*.
 
- 
-  4.	RESPUESTAS A LA PREGUNTA DE NEGOCIO
+[SQL QUERY → Query03.sql](sql/Query03.sql)
 
-Los resultados obtenidos muestran que las regiones NAM (Norteamérica) y EMEA (Europa, Medio Oriente y África) concentran los mayores beneficios totales, mientras que LATAM (Latinoamérica) presenta una brecha significativa respecto al resto.
+![Industry Profitability — Commit Stage Accounts](images/image03.png)
+![Industry Profitability Chart](images/image03g.png)
 
-Sin embargo, al analizar los márgenes promedio de beneficio, se observa que las diferencias porcentuales entre regiones son menores, lo que sugiere que la rentabilidad relativa es más homogénea, aunque el volumen de negocio no lo sea.
+**Business Insight**
 
-Estos hallazgos indican que el desempeño regional no depende solo del tamaño del mercado, sino también de la composición industrial dominante en cada región y su nivel de madurez comercial.
-Por ejemplo, una región con industrias de márgenes altos, aunque tenga menos volumen, puede ser tan o más rentable que otra con mayores ventas, pero baja eficiencia.
+The **Financial sector is not meeting the $500K forecast threshold** in the Commit pipeline — a critical flag for the sales team. This underperformance may reflect deal slippage, longer-than-expected sales cycles, or misaligned forecasting at the account level.
 
+> **Recommended action:** Prioritize pipeline review for Financial sector accounts in Commit stage to assess deal health and adjust revenue projections accordingly.
 
-  5.	REFLEXIÓN Y SUGERENCIA DE ESTRATEGIA
+---
 
-a)	Reforzar las industrias de margen alto en regiones emergentes (LATAM y APAC):
-Replicar el modelo operativo de sectores rentables (como Tecnología o Servicios Financieros) en regiones de menor volumen puede acelerar la rentabilidad global.
+### 4. Forecast vs. Actual Revenue Analysis — Category-Level Trajectory
 
-b)	Optimizar sectores de margen medio-bajo:
-Analizar los costos y políticas de precios en industrias con márgenes <33% para elevar su eficiencia y contribuir al beneficio total.
+**Business Context:** The finance leadership requires a consolidated view comparing **FY2021 actual profits** against **FY2022 forecasted profits** by product category, along with sales cycle velocity indicators (oldest and most recent open opportunities per category).
 
-c)	Priorización de inversión regional:
-Concentrar los esfuerzos comerciales y presupuestarios en NAM y EMEA para sostener su crecimiento, mientras se diseñan estrategias de expansión escalonada en LATAM.
+[SQL QUERY → Query04.sql](sql/Query04.sql)
+
+![Forecast vs Actual by Category](images/image04.png)
+![Forecast vs Actual Chart](images/image04g.png)
+
+**Business Insight**
+
+Across all 4 product categories, the minimum opportunity age is **2–3 days**, indicating healthy short-cycle deal activity. However, **3 out of 4 categories** contain opportunities open for over **365 days** — a significant operational risk.
+
+> **Recommended action:** Conduct a pipeline audit on all opportunities exceeding 12 months. Long-stalled deals distort revenue forecasts and create planning inefficiencies in inventory, spare parts, and technical support resourcing. Each open deal should be either moved to close or formally disqualified.
+
+---
+
+### 5. Strategic Profitability Study — Region × Industry Cross-Analysis
+
+#### Objective
+
+Identify which **region–industry combinations** yield the highest and lowest profit margins, enabling the commercial leadership team to optimize resource allocation, replicate high-performance strategies, and address underperforming segments.
+
+#### Hypothesis
+
+Regions and industries with the strongest margin profiles should be used as benchmarks. Underperforming combinations may reflect pricing inefficiencies, cost structure issues, or underdeveloped market presence — all correctable with the right strategic lever.
+
+---
+
+#### Exploratory Analysis — Regional KPI Summary
+
+The following query extracts total, minimum, maximum, and average profit alongside margin averages and standard deviation across all 4 regions:
+
+[SQL QUERY → Query05.sql](sql/Query05.sql)
+
+![Regional KPI Summary](images/image05.png)
+![Regional KPI Chart](images/image05g.png)
+
+**Key Finding:** **NAM and EMEA** generate the highest absolute profit, while **LATAM significantly underperforms** in volume. Notably, average profit margins are relatively homogeneous across regions — suggesting the profitability gap is driven by **deal volume and market size**, not by pricing or cost efficiency differences.
+
+---
+
+#### Deep Dive — Industry Margin Ranking by Region
+
+Industries are classified by margin performance using the following thresholds:
+
+| Margin | Classification |
+|---|---|
+| > 38% | 🟢 High |
+| 33% – 38% | 🟡 Medium |
+| < 33% | 🔴 Low |
+
+[SQL QUERY → Query05b.sql](sql/Query05b.sql)
+
+![Industry Margin by Region](images/image05b.png)
+![Industry Margin Chart](images/image05bg.png)
+
+---
+
+#### Strategic Recommendations
+
+**a) Scale high-margin industries into emerging regions (LATAM & APAC)**
+Replicating the operational model of sectors with consistently high margins (e.g. Technology, Financial Services) in lower-volume regions can accelerate overall profitability without proportional cost increases.
+
+**b) Optimize underperforming industry–region combinations**
+For segments with margins below 33%, a structured review of pricing policies, cost structures, and deal qualification criteria is recommended to improve contribution to total profit.
+
+**c) Investment prioritization**
+Sustain commercial momentum in **NAM and EMEA** while designing phased expansion strategies for **LATAM** — focusing on high-margin industries with demonstrated demand signals in adjacent markets.
+
+---
+
+*Analysis conducted on enterprise commercial sales data covering FY2020–2022 across 4 global regions (NAM, EMEA, APAC, LATAM).*
+
 
 d)	Seguimiento con dashboards dinámicos:
 Mantener el monitoreo del beneficio total, margen promedio y su desviación por región e industria, utilizando vistas como BENEF_MARGE_REG para detectar rápidamente desviaciones o nuevas oportunidades.
