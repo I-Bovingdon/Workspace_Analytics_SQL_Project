@@ -166,7 +166,5 @@ Sustain commercial momentum in **NAM and EMEA** while designing phased expansion
 *Analysis conducted on enterprise commercial sales data covering FY2020–2022 across 4 global regions (NAM, EMEA, APAC, LATAM).*
 
 
-d)	Seguimiento con dashboards dinámicos:
-Mantener el monitoreo del beneficio total, margen promedio y su desviación por región e industria, utilizando vistas como BENEF_MARGE_REG para detectar rápidamente desviaciones o nuevas oportunidades.
 
 
